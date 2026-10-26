@@ -8,7 +8,6 @@ This repository holds my work so far.
 - **01_NIST_CSF**: explainer on the six functions of NIST CSF 2.0, and a self-directed gap assessment of a small business.
 - **02_ISO27001_SOC2**: comparison of NIST CSF, ISO 27001 and SOC 2, with Annex A controls in plain language.
 - **NISt_CSF_CRUMBLINE_Assesment**: Used NIST CSF framework and applied it to my small scale cookie business.
-- **04_Cloud_Compliance_Mapping**: ISO 27001 and SOC 2 controls mapped against AWS's shared responsibility model (in progress).
 
 Contact: aarohinanjkar316@gmail.com
 LinkedIn: https://www.linkedin.com/in/aarohi-nanajkar-82a831366/
