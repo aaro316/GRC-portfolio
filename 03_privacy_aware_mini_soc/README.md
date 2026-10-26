@@ -1,0 +1,3 @@
+## Privacy-Aware Mini SOC
+
+A Python-based Security Operations Centre (SOC) project that detects suspicious login activity using rule-based detection. It uses SQLite to store security alerts and Streamlit to provide an interactive dashboard for monitoring and incident investigation. The project also incorporates privacy-aware logging practices, synthetic security data, and testing to demonstrate core Blue Team and security operations concepts.
