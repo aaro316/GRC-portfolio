@@ -1,8 +1,9 @@
 import json
+import ipaddress
 from collections import defaultdict, deque
 from datetime import datetime, timedelta
 from pathlib import Path
-
+from database import init_db, save_alerts
 
 def load_events(file_path="data/events.jsonl"):
     events = []
@@ -15,6 +16,25 @@ def load_events(file_path="data/events.jsonl"):
     events.sort(key=lambda event: datetime.fromisoformat(event["timestamp"]))
     return events
 
+def mask_ip(ip_address):
+    """Mask the final portion of an IP address."""
+    try:
+        address = ipaddress.ip_address(ip_address)
+
+        if address.version == 4:
+            return str(address).rsplit(".", 1)[0] + ".xxx"
+
+        return ":".join(address.exploded.split(":")[:3]) + ":****"
+
+    except ValueError:
+        return "REDACTED"
+
+def mask_username(username):
+    """Mask usernames in console output."""
+    if not username:
+        return "REDACTED"
+
+    return str(username)[0] + "***"
 
 def detect_suspicious_logins(events):
     alerts = []
@@ -77,9 +97,7 @@ def detect_suspicious_logins(events):
 
                 # Prevent the same failures from repeatedly triggering alerts.
                 account_attempts.clear()
-
     return alerts
-
 
 if __name__ == "__main__":
     events_path = Path("data/events.jsonl")
@@ -87,11 +105,24 @@ if __name__ == "__main__":
     if not events_path.exists():
         print("Sample data not found. Generate it first.")
     else:
+        init_db()
         events = load_events(events_path)
         alerts = detect_suspicious_logins(events)
+        save_alerts(alerts)
 
         print(f"Events processed: {len(events)}")
         print(f"Alerts generated: {len(alerts)}")
 
+        # Display alerts with sensitive information masked.
         for alert in alerts:
-            print(json.dumps(alert, indent=2))
+            safe_alert = alert.copy()
+
+            safe_alert["source_ip"] = mask_ip(
+                alert["source_ip"]
+            )
+
+            safe_alert["username"] = mask_username(
+                alert["username"]
+            )
+
+            print(json.dumps(safe_alert, indent=2))
