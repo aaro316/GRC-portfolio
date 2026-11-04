@@ -80,7 +80,7 @@ if filtered_alerts:
 
     st.dataframe(
         pd.DataFrame(filtered_alerts)[display_columns],
-        use_container_width=True,
+        width="stretch",
         hide_index=True
     )
 else:
@@ -149,6 +149,6 @@ else:
 with st.expander("View source security events"):
     st.dataframe(
         pd.DataFrame(events),
-        use_container_width=True,
+        width="stretch",
         hide_index=True
     )
