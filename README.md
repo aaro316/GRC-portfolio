@@ -7,7 +7,7 @@ This repository holds my work so far.
 ## Contents
 - **01_NIST_CSF**: explainer on the six functions of NIST CSF 2.0, and a self-directed gap assessment of a small business.
 - **02_ISO27001_SOC2**: comparison of NIST CSF, ISO 27001 and SOC 2, with Annex A controls in plain language.
-- [**01_NIST_CSF**](./01_NIST%20CSF%20.pdf): Explainer on the six functions of NIST CSF 2.0 and a self-directed gap assessment of a small business.
+- [**NIST_CSF_Gap_Assessment_Crumbline**](./Aarohi_NIST_CSF_Gap_Assessment_Crumbline.pdf): NIST CSF 2.0 gap assessment applied to Crumbline, a small-scale cookie business.
 - [**03_privacy_aware_mini_soc**](./03_privacy_aware_mini_soc/): A Python-based Security Operations Centre (SOC) project featuring rule-based threat detection, SQLite alert management, a Streamlit dashboard, automated testing, and privacy-aware logging.
 
 Contact: aarohinanjkar316@gmail.com
